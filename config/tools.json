@@ -1,0 +1,8 @@
+{
+  "tools": [
+    "BuscarWebTool",
+    "EnviarCorreoTool",
+    "GuardarSheetsTool",
+    "ProgramarRecordatorioTool"
+  ]
+}

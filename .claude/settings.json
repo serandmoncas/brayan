@@ -1,0 +1,61 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Edit",
+      "Write",
+      "Bash(make:*)",
+      "Bash(pytest:*)",
+      "Bash(python3:*)",
+      "Bash(pip:*)",
+      "Bash(node:*)",
+      "Bash(npm:*)",
+      "Bash(ollama:*)",
+      "Bash(curl:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "WebSearch",
+      "WebFetch"
+    ],
+    "ask": [
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git rebase:*)",
+      "Bash(rm:*)",
+      "Bash(mv:*)",
+      "Bash(cp:*)"
+    ],
+    "deny": [
+      "Read(.env)",
+      "Read(**/credentials.json)",
+      "Bash(git push --force:*)",
+      "Bash(rm -rf:*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if echo \"$CLAUDE_TOOL_INPUT\" | grep -qiE 'rm -rf|git push --force|chmod -R 777 /|:\\(\\) \\{|eval '; then echo 'BLOCKED: dangerous command'; exit 2; fi"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write(*.py)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "ruff check --fix \"$CLAUDE_FILE_PATHS\" 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  }
+}

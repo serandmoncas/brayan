@@ -1,0 +1,15 @@
+# Secrets y runtime
+.env
+*.jsonl
+memory/
+config/credentials.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node (bridge)
+node_modules/
+src/bridge/session/   # whatsapp-web.js auth session
