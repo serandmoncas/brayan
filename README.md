@@ -1,6 +1,6 @@
 # 🤖 Brayan — el Agente de Bolsillo
 
-El "Jarvis" Colombiano... Antioqueño... paisa... nea.
+El "Jarvis" Colombiano... Antioqueño... paisa.
 
 Un asistente personal que vive en tu WhatsApp y al que le hablás en lenguaje natural. Vos escribís
 el **qué** ("mándale correo a mi proveedor pidiendo 10kg de sustrato"); el agente resuelve el
